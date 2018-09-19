@@ -1,0 +1,804 @@
+body,h1,h2,h3,h4,h5,li,ol,ul,p{
+	margin: 0;
+	padding: 0;
+}
+
+@font-face{
+    font-family: Bernadette;
+    src: url(../font/bernadette.ttf);
+}
+
+#menu_principal{
+/* formatação do menu fixado no topo */
+    width: 100%;
+    height: 90px;
+    background-color: #a641b5;
+    box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.2);
+    position: fixed;
+    Z-INDEX: 999;
+}
+
+#caixa_menu{
+    /* formatação da caixa que fica os elementos do menu para não se movam quando der zoom */
+    width: 1200px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#menu{
+/* formatando as caixas que ficam com os itens */
+    width: 550px;
+    height: 40px;
+    margin-left: -8px;
+    margin-top: 50px;
+    float: left;
+    
+}
+
+#img_menu{
+/* colocando o logo no menu*/
+    width: 450px;
+    height: 180px;
+    background-repeat: no-repeat;
+    background-image: url(../image/logotipo.png);
+    background-size: 400px;
+    float: left;
+    margin-top: -10px;
+    margin-left: -80px;
+    
+}
+
+#menu_principal li{
+/* deixando os itens do menu lado a lado e formatando a fonte */
+    float: left;
+    display: inline;
+    color: #fff;
+    font-family: arial;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    list-style: none;
+    padding: 10px 10px 10px 10px;
+    margin-top: -20px;
+    margin-left: -10px;
+
+}
+
+#menu_principal li:hover{
+    padding: 10px 10px 10px 10px;
+    background-color: #F72282;
+    color: #fff;
+}
+
+/* quando passar o mouse no itens do menu, acontecerá isso: */
+a:link, a:visited {
+	text-decoration: none;
+    color: #fff;
+	}
+a:hover { 
+	color: #fff;
+	}
+a:active {
+	color: #fff;
+	}
+
+
+.caixas_autenticacao{
+/*formatacao das caixas de texto que recebem a autenticação do usuário */
+    width: 190px;
+    margin-top: 10px;
+    margin-left: 90px;
+    float: left;
+}
+
+.caixa_usuario, .caixa_senha p{
+/* formatação da palavras que ficam na autenticação do login */
+    font-family: arial;
+    text-transform: uppercase;
+    font-size: 10px;
+    color: #fff;
+}
+
+
+.caixa_botao{
+/* formatação do botão de loggin*/
+    float: left;
+    margin-left: 180px;
+    margin-top: -40px;
+}
+
+.botao_menu{
+    background-color: #D452E8;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 10px;
+}
+
+.botao_menu:hover{
+    background-color: #fff;
+    color: black;
+}
+
+#caixa_principal{
+ /* formatação da caixa principal que ficará todos os elementos depois do menu suspenso */
+    width: 1200px;
+    height: 980px;
+    /*centralizando*/
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #f2f2f2;
+}
+
+#principal{
+/* formatação de uma caixa dentro da outra*/
+    width: 100%;
+    height: 100%;
+    margin-top: 90px;
+    float: left;
+}
+
+#slider{
+/* formatação dos slides que ficam embaixo do menu*/
+    width: 100%;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#caixa_menu_lateral{
+/* formatação do menu lateral */
+    width: 20%;
+    height: auto;
+    min-height: 845px;
+    background-color: #a3a3a3;
+    float: left;
+    box-shadow: 5px 0px 5px 0px rgba(0,0,0,0.2);
+    
+}
+
+#menu_lateral li{
+    /* formatandoas palavras que ficam itens que ficam no menu lateral*/
+    width: 100%;
+    color: #fff;
+    font-family: arial;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    list-style: none;
+    padding: 10px 50px 10px 50px;
+    background-color: #a641b5;
+    border-radius: 5px;
+}
+
+#menu_lateral li:hover {
+/* evento de quando passar o mouse nos itens do menu lateral */
+    color: #fff;
+    background: #F72282;
+    padding: 10px 50px 10px 50px;
+    cursor: pointer;
+    
+    
+}
+
+#caixa_itens{
+/* formatação do espaço que ficará os itens */
+    width: 80%;
+    min-height: 400px;
+    height: auto;
+    background-color: #f4f4f4;
+    float: left;
+    overflow: hidden;
+    padding-bottom: 20px;
+}
+  
+
+.caixa_produto{
+/* formatando a caixa do produto*/
+    width: 32%;
+    height: 430px;
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    background-color: #fff;
+    box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.2);
+    border-radius: 8px;
+}
+
+
+/* FORMATANDO A IMAGEM DO PRODUTO */
+.img_produto{
+    
+    background-size: 130px;
+    background-repeat: no-repeat;
+    width: 70%;
+    height: 220px;
+    margin-left: 75px;
+    margin-top: 10px;
+}
+
+
+.titulo_produto, .titulo_descricao, .titulo_preco{
+    font-family: arial;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 13px;
+    color: #a641b5;
+    
+}
+.titulo_livro{
+    
+}
+.sobre{
+    text-transform: none;
+    font-family: arial;
+    color: black;
+    margin-top: 5px;
+    font-weight: none;
+}
+
+.titulo_mais{
+    font-family: arial;
+    margin-left: 230px;
+    margin-right: 08px;
+    cursor: pointer;
+    color: white;
+    background-color: #D452E8;
+    border-radius: 5px;
+    padding: 10px 5px;
+    font-size: 14px;
+    
+}
+
+.titulo_mais:hover{
+    background-color: #F72282;
+    color: white;
+}
+
+.footer{
+/* formatação do menu fixado no topo */
+    width: 1200px;
+    height: 180px;
+    /*centralizando*/
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #383838;
+    float: left;
+}
+
+.footer img{
+    width: 300px;
+    height: 110px;
+    margin-left: 450px;
+    margin-top: 10px;
+}
+
+.titulo_footer{
+    width: 90%;
+    height: auto;
+    margin-left: 70px;
+    margin-top: 20px;
+    font-family: monospace;
+    text-align: center;
+    font-size: 10px;
+    color: aliceblue;
+    float: left;
+}
+
+
+/* FORMATAÇÃO DA PAGINA SOBRE A EMPRESA */
+
+#caixa_sobre_principal{
+/* formatação de uma caixa dentro da outra*/
+    width: 100%;
+    height: 100%;
+    float: left;
+    background-color: #f4f4f4;
+}
+
+.texto_sobre{
+    width: 60%;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    
+}
+
+.texto_sobre h1{
+    margin-top: 60px;
+    text-align: center;
+    font-family: Bernadette;
+    color: #a641b5;
+    font-size: 50px;
+    border-bottom: 1px solid #a641b5;
+}
+
+.texto_sobre p{
+    text-align: center;
+    font-family: monospace;
+    margin-top: 10px;
+    font-family: arial;
+}
+.imagem_sobre{
+    width: 100%;
+    height: 650px;
+    background-image: url(../image/livraria.jpg);
+    background-repeat: cover;
+    background-size: 100%;
+    float: left;
+    background-attachment: fixed;
+}
+
+
+
+/* FORMATAÇÃO DA PAGINA DO CONTATO */
+.caixa_formulario{
+    width: 500px;
+    height: 800px;
+    background-color: #000;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 50px;
+    color: #fff;
+}
+
+.titulo{
+    text-transform: uppercase;
+    color: #fff;
+    font-family: aharoni;
+    text-align: center;
+    letter-spacing: 5px;
+    margin-top: 20px;
+    width: 100%;
+    height: 5%;
+    padding-top: 20px;
+    font-size: 22px;
+}
+
+.formulario{
+    width: 100%;
+    height: 90%;
+    padding-top: 50px;
+    margin-left: 20px;
+    color: #fff;
+}
+
+.form{
+    border: none;
+    background-color: #000;
+    border-bottom: 1px solid #fff;
+    font-family: arial;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #fff;
+}
+
+.caixa_input{
+    width: 90%;
+    height: 30px;
+    margin-top: 25px;
+    
+}
+
+textarea{
+    border: none;
+    background-color: #000;
+    border-bottom: 1px solid #fff;
+    font-family: arial;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    resize: none;
+    height: 150px;
+    width: 100%;
+    color: #FFF;
+}
+
+.formatacao_botao{
+    background-color: #a641b5; 
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    width: 150px;
+    height: 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 2px 2px;
+    cursor: pointer;
+    margin-left: 290px;
+    margin-top: 150px;
+}
+
+.formatacao_botao:hover{
+    background-color: white;
+    color: black;
+}
+select{
+    width: 455px;
+}
+
+
+/* formatação dos icones de redes sociais */
+.redes_sociais{
+	width: 100px;
+    height: 300px;
+    float: left;
+    margin-left: 1200px;
+    margin-top: -800px;
+    
+
+}
+
+.redes_sociais img{
+    width: 60px;
+    height: 60px;
+}
+
+/* FORMATAÇÃO DA PAGINA AUTORES EM DESTAQUE */
+#caixa_autores{
+    width: 100%;
+    height: 920px;
+    background-color: #f2f2f2
+}
+
+.sobre_autor, .foto_autor{
+    /* formatando a caixa de sobre e foto do autor */
+    width: 580px;
+    height: 400px;
+    float: left;
+    margin-left: 340px;
+}
+
+.sobre_autor h2{
+    margin-top: 60px;
+    text-align: center;
+    font-family: Bernadette;
+    color: #a641b5;
+    font-size: 60px;
+    border-bottom: 1px solid #a641b5;
+}
+
+.sobre_autor p{
+    font-family: arial;
+    margin-top: 10px;
+    text-align: justify;
+}
+
+.foto_autor img{
+    /* formatando o tamanho e o espaçamento da foto*/
+    width: 400px;
+    margin-left: 80px;
+    margin-top: 10px;
+}
+
+.livros_autor{
+    /* foto completa */
+    width: 100%;
+    height: 600px;
+    background-image: url(../image/autordestaque.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    float: left;
+}
+
+
+.caixa_poema{
+    width: 30%;
+    height: 450px;
+    margin-top: 60px;
+    margin-left: 50px;
+    opacity: 1.0;
+    /* font */
+    font-family: monospace;
+    font-size: 16px;
+    color: #fff; 
+}
+
+/* FORMATAÇÃO DA PAGINA DE LANÇAMENTO */
+
+#principal_destaque{
+    width: 100%;
+    height: 1100px;
+    background-color: #f2f2f2;
+    float: left;
+}
+
+.livro_destaque{
+    width: 300px;
+    height: 400px;
+    margin-left: 75px;
+    box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.2);
+    float: left;
+    margin-top: 30px;
+}
+
+#titulo_destaque{
+    font-family: bernadette;
+    font-size: 60px;
+    color: #a641b5;
+    width: 100%;
+    border-bottom: 1px solid #a641b5;
+    margin-top: 80px;
+    text-align: center;
+    
+}
+
+.descricao_livro{
+    width: 300px;
+    opacity: 0.0;
+    margin-top: 280px;
+    margin-left: -300px;
+    background-color: #a641b5;
+    float: left;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    font-family: arial;
+    text-transform: uppercase;
+    padding-top: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.descricao_livro:hover{
+    height: 140px;
+    opacity: 1.0;
+}
+
+/* FORMATAÇÃO DA LOJA NOSSAS */
+
+#caixa_lojas{
+    width: 100%;
+    height: 1200px;
+    background-color: gainsboro;
+    float: left;
+}
+
+#titulo_loja{
+    width: 70%;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    margin-top: 60px;
+    text-align: center;
+    font-family: Bernadette;
+    color: #a641b5;
+    font-size: 60px;
+    border-bottom: 1px solid #a641b5;
+}
+
+.caixa_local{
+    width: 500px;
+    height: 200px;
+    box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.2);
+    background-color: white;
+    float: left;
+    margin-left: 60px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.caixa_local:hover{
+    box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.2);
+}
+
+.nome_local, .telefone_local{
+    font-family: arial;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.loja_local{
+    font-family: arial;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 150px;
+    background-color: #a641b5;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+#caixa_mapa{
+    width: 100%;
+    height: 700px;
+    background-image: url(../image/maps.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin-top: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+}
+
+
+/* FORMATAÇÃO CAIXA LOJAS */
+#caixa_promocoes{
+    width: 100%;
+    height: 1400px;
+    background-color: gainsboro;
+    float: left;
+}
+
+#titulo_promocoes{
+    width: 70%;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    margin-top: 60px;
+    text-align: center;
+    font-family: Bernadette;
+    color: #a641b5;
+    font-size: 60px;
+    border-bottom: 1px solid #a641b5;
+}
+
+.livro_promocao{
+    width: 250px;
+    height: 350px;
+    background-color: antiquewhite;
+    margin-left: 200px;
+    margin-top: 40px;
+
+}
+
+.descricao_promocao{
+    width: 400px;
+    height: 285px;
+    background-color: white;
+    float: left;
+    margin-top: -350px;
+    margin-left: 500px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.2);
+}
+
+.caixa_descricao{
+    width: 90%;
+    height: 80%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.titulo_promocao{
+    /* titulo do livro da caixa de promocoes */
+    font-family: arial;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #a641b5;
+    text-align: center;
+}
+
+.sobre_promocao{
+    font-family: arial;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+.preco_antigo{
+    font-family: arial;
+    color: red;
+    text-decoration: line-through;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.preco_novo{
+  font-family: arial;
+    color: black;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 18px;  
+}
+
+.botao_compre{
+    font-family: arial;
+    color: white;
+    text-align: center;
+    background-color: #D452E8;
+    border-radius: 5px;
+    padding: 10px 5px;
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+.botao_compre:hover{
+   background-color: #fff;
+    color: black;
+}
+
+/* SLIDER */
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+    display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+
+
+
+
+
+
+
+
