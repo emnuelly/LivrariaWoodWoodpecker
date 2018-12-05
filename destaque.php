@@ -1,3 +1,8 @@
+<?php 
+   require_once('conexao.php');
+
+    $conexao = conexaoDb();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -42,49 +47,33 @@
             <div id="principal">
                 <div id="principal_destaque">
                     <!-- TITUTLO DA PAGINA-->
-                    <div id="titulo_destaque"> Destaques </div>
+                    <div id="titulo_destaque"> Livro em destaque </div>
+                    <?php 
                     
+                    $sql = "SELECT * FROM tbl_destaque WHERE status=1 limit 1";
+                
+                    $select = mysqli_query($conexao, $sql);
+       
+                    while($rs = mysqli_fetch_array($select)){
+                   
+                    ?>
                     <!-- PRODUTO-->
                     <div class="livro_destaque">
-                        <img src="image/produto9.jpg" alt="livro" width="300" height="400">
+                        <img src="cms/<?php echo($rs['fotoDestaque']) ?>" alt="livro" width="400" height="510">
                     </div>
                     <!-- DIV DO VEJA MAIS-->
-                    <div class="descricao_livro">VEJA MAIS</div>
-                    
-                    <!-- PRODUTO-->
-                    <div class="livro_destaque">
-                        <img src="image/produto8.jpg" alt="livro" width="300" height="400">
+                    <div class="descricao_livro">
+                        <div class="titulo_dest">
+                         <h3>Livro:</h3><?php echo($rs['titulo']) ?>
+                        </div>
+                        <div class="titulo_dest">
+                        <h3>Autor(a):</h3><?php echo($rs['autor']) ?>
+                        </div>
+                        <div class="desc_destaque">
+                       <?php echo($rs['descricao']) ?>
+                        </div>
                     </div>
-                    <!-- DIV DO VEJA MAIS-->
-                    <div class="descricao_livro">VEJA MAIS</div>
-                    
-                    <!-- PRODUTO-->
-                    <div class="livro_destaque">
-                        <img src="image/produto7.jpg" alt="livro" width="300" height="400">
-                    </div>
-                    <!-- DIV DO VEJA MAIS-->
-                    <div class="descricao_livro">VEJA MAIS</div>
-                    
-                    <!-- PRODUTO-->
-                    <div class="livro_destaque">
-                        <img src="image/produto5.jpg" alt="livro" width="300" height="400">
-                    </div>
-                    <!-- DIV DO VEJA MAIS-->
-                    <div class="descricao_livro">VEJA MAIS</div>
-                    
-                    <!-- PRODUTO-->
-                    <div class="livro_destaque">
-                        <img src="image/produto4.jpg" alt="livro" width="300" height="400">
-                    </div>
-                    <!-- DIV DO VEJA MAIS-->
-                    <div class="descricao_livro">VEJA MAIS</div>
-                    
-                    <!-- PRODUTO-->
-                    <div class="livro_destaque">
-                        <img src="image/produto2.jpg" alt="livro" width="300" height="400">
-                    </div>
-                    <!-- DIV DO VEJA MAIS-->
-                    <div class="descricao_livro">VEJA MAIS</div>
+                     <?php } ?>
                     
                 </div>
                 <div class="redes_sociais">

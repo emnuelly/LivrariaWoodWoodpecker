@@ -1,3 +1,8 @@
+<?php 
+   require_once('conexao.php');
+
+    $conexao = conexaoDb();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -44,20 +49,27 @@
                 <div id="caixa_lojas">
                    <div id="titulo_loja"> Encontre uma de nossas lojas: </div>
                    <!-- CAIXA QUE FICA AS INFORMAÇÕES DA LOJA -->
+                    <?php 
+                     $sql = "SELECT * FROM tbl_lojas where status=1;";
+                    
+
+                    $select = mysqli_query($conexao, $sql);
+       
+                    while($rs = mysqli_fetch_array($select)){
+                   
+                        
+                    ?>
                    <div class="caixa_local">
-                    <div class="loja_local">Loja 1</div>
-                    <div class="nome_local">Av Carlos Alberto, Jd FLores - São Paulo, SP</div>
-                    <div class="telefone_local">Fone: (11) 92929-2323</div>
+                    <div class="loja_local"><?php echo($rs['tipoLoja']) ?></div>
+                    <div class="nome_local"><?php echo($rs['endereco']) ?></div>
+                    <div class="telefone_local">Fone: <?php echo($rs['telefone']) ?></div>
                    </div>
                     <!-- CAIXA QUE FICA AS INFORMAÇÕES DA LOJA -->
-                   <div class="caixa_local">
-                   <div class="loja_local">Loja 2</div>
-                    <div class="nome_local">Av Carlos Alberto, Jd FLores - São Paulo, SP</div>
-                    <div class="telefone_local">Fone: (11) 92929-2323</div>
-                   </div>
+                   
+                    <?php } ?>
                    <!-- CAIXA QUE FICA A FOTO DO MAPA, para mais tarde ficar o Google Maps -->
                    <div id="caixa_mapa">
-                    
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.005499470569!2d-46.65086288569707!3d-23.56824596773007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59bf2a2dd5f3%3A0xca37f674a69a0c75!2sLivraria+Martins+Fontes!5e0!3m2!1spt-BR!2sbr!4v1541642075734" width="1200" height="700" frameborder="0" style="border:0" allowfullscreen></iframe>
                    </div>
                 </div>
 				<div class="redes_sociais">

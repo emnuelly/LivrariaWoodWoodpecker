@@ -8,6 +8,11 @@ body,h1,h2,h3,h4,h5,li,ol,ul,p{
     src: url(../font/bernadette.ttf);
 }
 
+
+/* ##### CSS VERSÃO DESKTOP #####*/
+@media screen and (min-width: 1000px)
+{
+
 #menu_principal{
 /* formatação do menu fixado no topo */
     width: 100%;
@@ -53,9 +58,9 @@ body,h1,h2,h3,h4,h5,li,ol,ul,p{
 /* deixando os itens do menu lado a lado e formatando a fonte */
     float: left;
     display: inline;
-    color: #fff;
+    color: #D452E8;
     font-family: arial;
-    font-size: 14px;
+    font-size: 14px; 
     text-transform: uppercase;
     font-weight: bold;
     list-style: none;
@@ -67,17 +72,17 @@ body,h1,h2,h3,h4,h5,li,ol,ul,p{
 
 #menu_principal li:hover{
     padding: 10px 10px 10px 10px;
-    background-color: #F72282;
-    color: #fff;
+    background-color: #FFF;
+    color: #000;
 }
 
 /* quando passar o mouse no itens do menu, acontecerá isso: */
 a:link, a:visited {
 	text-decoration: none;
-    color: #fff;
+    color:  #FFF;
 	}
 a:hover { 
-	color: #fff;
+	color: #D452E8;
 	}
 a:active {
 	color: #fff;
@@ -109,16 +114,16 @@ a:active {
 }
 
 .botao_menu{
-    background-color: #D452E8;
-    color: #fff;
+    background-color: #FFF;
+    color: #000;
     border: none;
     border-radius: 5px;
     padding: 8px 10px;
 }
 
 .botao_menu:hover{
-    background-color: #fff;
-    color: black;
+    background-color: #a641b5;
+    color: white;
 }
 
 #caixa_principal{
@@ -150,8 +155,8 @@ a:active {
 /* formatação do menu lateral */
     width: 20%;
     height: auto;
-    min-height: 845px;
-    background-color: #a3a3a3;
+    min-height: 300px;
+    background-color: #000;
     float: left;
     box-shadow: 5px 0px 5px 0px rgba(0,0,0,0.2);
     
@@ -327,8 +332,6 @@ a:active {
 .imagem_sobre{
     width: 100%;
     height: 650px;
-    background-image: url(../image/livraria.jpg);
-    background-repeat: cover;
     background-size: 100%;
     float: left;
     background-attachment: fixed;
@@ -433,8 +436,7 @@ select{
     height: 300px;
     float: left;
     margin-left: 1200px;
-    margin-top: -800px;
-    
+    position: fixed;
 
 }
 
@@ -484,10 +486,13 @@ select{
     /* foto completa */
     width: 100%;
     height: 600px;
-    background-image: url(../image/autordestaque.jpg);
+    
+    float: left;
+}
+
+.livros_autor img{
     background-repeat: no-repeat;
     background-size: 100%;
-    float: left;
 }
 
 
@@ -513,12 +518,12 @@ select{
 }
 
 .livro_destaque{
-    width: 300px;
-    height: 400px;
-    margin-left: 75px;
+    width: 400px;
+    height: 510px;
+    margin-left: 195px;
     box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.2);
     float: left;
-    margin-top: 30px;
+    margin-top: 100px;
 }
 
 #titulo_destaque{
@@ -527,32 +532,47 @@ select{
     color: #a641b5;
     width: 100%;
     border-bottom: 1px solid #a641b5;
-    margin-top: 80px;
+    margin-top: 60px;
     text-align: center;
     
 }
 
 .descricao_livro{
-    width: 300px;
-    opacity: 0.0;
-    margin-top: 280px;
-    margin-left: -300px;
-    background-color: #a641b5;
+    width: 400px;
+    margin-top: 200px;
+    height: 280px;
+    margin-left: 20px;
+    background-color: #fff;
     float: left;
-    color: #fff;
-    font-weight: bold;
+    color: #000;
     text-align: center;
     font-family: arial;
-    text-transform: uppercase;
     padding-top: 10px;
     font-size: 30px;
     cursor: pointer;
+     box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.2);
+    border-radius: 15px;
 }
 
-.descricao_livro:hover{
-    height: 140px;
-    opacity: 1.0;
+.titulo_dest{
+    font-size: 16px;
+    text-align: left;
+    margin-top: 10px;
+    margin-left: 10px;
 }
+.titulo_dest h3{
+    font-size: 16px;
+    color: #a641b5;
+}
+
+.desc_destaque{
+    font-size: 16px;
+    overflow: auto;
+    width: 95%;
+    height: 150px;
+    margin-top: 10px;
+}
+
 
 /* FORMATAÇÃO DA LOJA NOSSAS */
 
@@ -621,9 +641,7 @@ select{
 #caixa_mapa{
     width: 100%;
     height: 700px;
-    background-image: url(../image/maps.png);
-    background-repeat: no-repeat;
-    background-size: 100%;
+
     margin-top: 300px;
     margin-left: auto;
     margin-right: auto;
@@ -679,6 +697,8 @@ select{
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
+    align-content: center;
+   
 }
 
 .titulo_promocao{
@@ -694,6 +714,8 @@ select{
     font-family: arial;
     font-size: 14px;
     margin-top: 15px;
+    overflow: auto;
+    height: 70px;
 }
 
 .preco_antigo{
@@ -702,7 +724,7 @@ select{
     text-decoration: line-through;
     text-align: center;
     margin-top: 15px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .preco_novo{
@@ -710,7 +732,8 @@ select{
     color: black;
     text-align: center;
     margin-top: 10px;
-    font-size: 18px;  
+    font-size: 18px;
+	font-weight: bold;
 }
 
 .botao_compre{
@@ -725,8 +748,9 @@ select{
 }
 
 .botao_compre:hover{
-   background-color: #fff;
-    color: black;
+   background-color: #F72282;
+    color: white;
+	transition: 0.5s;
 }
 
 /* SLIDER */
@@ -734,7 +758,7 @@ select{
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 1000px;
+  max-width: 1600px;
   position: relative;
   margin: auto;
 }
@@ -798,7 +822,28 @@ select{
 
 
 
+}
 
+@media screen and (max-width:680px)
+{
+
+    #menu_principal{
+        display: none;
+    }
+
+    .caixas_autenticacao{
+        display:none;
+    }
+
+    #slider{
+        /* formatação dos slides que ficam embaixo do menu*/
+        width: 100%;
+        height: 450px;
+        margin-left: auto;
+        margin-right: auto;
+        background-image: url(../image/01.jpg);
+    }
+}
 
 
 

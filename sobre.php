@@ -1,3 +1,8 @@
+<?php 
+   require_once('conexao.php');
+
+    $conexao = conexaoDb();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -42,13 +47,25 @@
             <div id="principal">
                 <section id="caixa_sobre_principal">
                     <!-- CAIXA DE TEXTO SOBRE -->
+                    <?php 
+                    
+                    $sql = "SELECT * FROM tbl_sobre WHERE status=1 limit 1";
+                
+                    $select = mysqli_query($conexao, $sql);
+       
+                    while($rs = mysqli_fetch_array($select)){
+                   
+                    ?>
                     <div class="texto_sobre"> 
-                        <h1> O que é a Woody Woodpecker?</h1>
-                        <p>Uma história de sucesso que se inicia com o sonho de Eva Herz: construir uma livraria para promover o encontro de pessoas com os mais variados interesses. E foi em busca desse sonho que, há 70 anos, Dona Eva fundou a Livraria Woody Woodpecker. A empresa teve um início tímido na casa da família Herz e, atualmente, é referência nacional com 18 lojas distribuídas pelo Brasil. Atualmente, a Livraria Woody Woodpecker se dedica a oferecer um espaço multimídia, onde a busca pelo produto é apenas o início de uma jornada enriquecedora: nossas lojas dão vida à cultura por meio de seu extenso acervo e também de seus teatros, auditórios, cafés
-e eventos gratuitos.</p>
+                        <h1><?php echo($rs['titulo']) ?></h1>
+                        <p><?php echo($rs['descricao']) ?></p>
                     </div>
+                   
                     <!-- IMAGEM -->
-                    <div class="imagem_sobre"></div>
+                    <div class="imagem_sobre">
+                        <img src="cms/<?php echo($rs['fotoSobre']) ?>" width="1200" height="650">
+                    </div>
+                     <?php } ?>
                 </section>
                 <footer class="footer">
                     <img src="image/footer.png" alt="logo do rodapé">

@@ -1,3 +1,8 @@
+<?php 
+   require_once('conexao.php');
+
+    $conexao = conexaoDb();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -43,64 +48,36 @@
             <div id="principal">
                  <div id="caixa_promocoes">
                      <!-- TITULO DA PAGINA -->
-                    <div id="titulo_promocoes">Promoções do mês:</div>
+                    <div id="titulo_promocoes">Promoções do mês:</div>                      <?php 
+                    
+                    $sql = "SELECT * FROM tbl_promocoes WHERE status=1 limit 3";
+                
+                    $select = mysqli_query($conexao, $sql);
+       
+                    while($rs = mysqli_fetch_array($select)){
+                   
+                    ?>
                      <!-- IMAGEM -->
                     <div class="livro_promocao">
-                        <img src="image/produto1.jpg" width="250" height="350" alt="Livro">
+                        <img src="cms/<?php echo($rs['fotoPromo']) ?>" width="250" height="350" alt="Livro">
                      </div>
                      <!-- CAIXA DA DESCRIÇÃO -->
                     <div class="descricao_promocao">
                         <div class="caixa_descricao">
                             <!-- TITULO DO LIVRO -->
-                            <div class="titulo_promocao"> Como Eu Era Antes de Você </div>
+                            <div class="titulo_promocao"> <?php echo($rs['titulo']) ?> </div>
                             <!-- DESCRIÇAO DO LIVRO -->
-                            <div class="sobre_promocao">A jovem e peculiar Louisa "Lou" Clark transita de emprego a emprego para ajudar a sustentar sua família. Entretanto, sua atitude alegre é testada quando se torna cuidadora de Will Traynor. </div>
+                            <div class="sobre_promocao"><?php echo($rs['descricao']) ?>  </div>
                             <!-- PREÇO ANTIGO -->
-                            <div class="preco_antigo">de R$ 69,99</div>
+                            <div class="preco_antigo">de R$<?php echo($rs['precoAntigo']) ?> </div>
                             <!-- PREÇO NOVO PARA FAZER A PROMOÇAO -->
-                            <div class="preco_novo"> por R$ 24,99</div>
+                            <div class="preco_novo"> por R$<?php echo($rs['precoNovo']) ?> </div>
+                            
                             <!-- BOTÃO DE COMPRA -->
                             <div class="botao_compre">COMPRE</div>
                         </div>
                     </div>
-                    <!-- IMAGEM -->
-                    <div class="livro_promocao">
-                        <img src="image/produto2.jpg" width="250" height="350" alt="Livro">
-                     </div>
-                     <!-- CAIXA DA DESCRIÇÃO -->
-                    <div class="descricao_promocao">
-                        <div class="caixa_descricao">
-                            <!-- TITULO DO LIVRO -->
-                            <div class="titulo_promocao"> Querido John </div>
-                            <!-- DESCRIÇAO DO LIVRO -->
-                            <div class="sobre_promocao">Quando o soldado John Tyree conhece Savannah Curtis, universitária idealista, um forte romance nasce entre eles. Durante sete anos de um tumultuado relacionamento, o casal se encontra apenas esporadicamente e mantém contato por meio de cartas de amor. </div>
-                            <!-- PREÇO ANTIGO -->
-                            <div class="preco_antigo">de R$ 54,99</div>
-                            <!-- PREÇO NOVO PARA FAZER A PROMOÇAO -->
-                            <div class="preco_novo"> por R$ 19,99</div>
-                            <!-- BOTÃO DE COMPRA -->
-                            <div class="botao_compre">COMPRE</div>
-                        </div>
-                     </div>
-                    <!-- IMAGEM -->
-                    <div class="livro_promocao">
-                        <img src="image/produto3.jpg" width="250" height="350" alt="Livro">
-                     </div>
-                     <!-- CAIXA DA DESCRIÇÃO -->
-                    <div class="descricao_promocao">
-                        <div class="caixa_descricao">
-                            <!-- TITULO DO LIVRO -->
-                            <div class="titulo_promocao"> Um Porto Seguro </div>
-                            <!-- DESCRIÇAO DO LIVRO -->
-                            <div class="sobre_promocao">Uma mulher misteriosa se muda para uma pequena cidade e recomeça sua vida. Apesar da estar determinada a não formar laços afetivos, ela não consegue e acaba levantando questionamentos sobre seu passado, que esconde um terrível segredo </div>
-                            <!-- PREÇO ANTIGO -->
-                            <div class="preco_antigo">de R$ 29,99</div>
-                            <!-- PREÇO NOVO PARA FAZER A PROMOÇAO -->
-                            <div class="preco_novo"> por R$ 9,99</div>
-                            <!-- BOTÃO DE COMPRA -->
-                            <div class="botao_compre">COMPRE</div>
-                        </div>
-                     </div>
+                     <?php } ?>
                 </div>
 				<div class="redes_sociais">
                     <img src="image/instagram.png" alt="instagram icone">

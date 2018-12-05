@@ -1,3 +1,8 @@
+<?php 
+   require_once('conexao.php');
+
+    $conexao = conexaoDb();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -41,15 +46,23 @@
         <div id="caixa_principal">
             <div id="principal">
                 <div id="caixa_autores">
+                    <?php 
+                     $sql = "SELECT * FROM tbl_autor where status=1 limit 1";
+
+                    $select = mysqli_query($conexao, $sql);
+       
+                    while($rsAutor = mysqli_fetch_array($select)){
+                   
+                        
+                    ?>
                     <section class="sobre_autor">
-                        <h2>Rupi Kaur</h2>
-                        <p>É uma poetisa feminista contemporânea, escritora e artista da palavra falada. Ela é popularmente conhecida como Instapoet pela atenção que ela ganha online com seus poemas no Instagram. Ela publicou um livro de poesia e prosa intitulado "milk and honey" (Outros jeitos de usar a boca, no Brasil) em 2015. O livro aborda os temas violência, abuso, amor, perda e feminilidade.</p>
+                        <h2><?php echo($rsAutor['nome']) ?></h2>
+                        <p><?php echo($rsAutor['descricao']) ?></p>
                     </section>
                     <div class="livros_autor">
-                        <div class="caixa_poema">
-                            "Você me diz para ficar quieta porque minhas opiniões me deixam menos bonita, mas não fui feita com um incêndio na barriga para que pudessem me apagar. Não fui feita com leveza na língua para que fosse fácil de engolir. Fui feita pesada, metade lâmina, metade seda. Difícil de esquecer e não tão fácil de entender."
-                            </div>
+                        <img src="cms/<?php echo($rsAutor['fotoAutor']) ?>" width="1200" height="650">
                     </div>
+                     <?php } ?>
                 </div>
                     <!-- começo das redes sociais-->
                     <div class="redes_sociais">
