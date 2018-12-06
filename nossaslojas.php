@@ -9,13 +9,15 @@
 	<meta charset="utf-8">
 	<title>Livraria Woody Woodpecker</title>
     <link rel="stylesheet" type="text/css" href="CSS/style.css">
+    <link rel="icon" href="image/chat.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="image/chat.png" type="image/x-icon" />
     <!-- final da formatação -->
     </head>
     <body>
         <nav id="menu_principal">
             <div id="caixa_menu">
                 <!-- LOGO DO MENU -->
-                <a href="home.php"><div id="img_menu"></div></a>
+                <a href="index.php"><div id="img_menu"></div></a>
                 <!-- MENU EM FORMA DE LISTA-->
                 <div id="menu">
                     <ul>
@@ -50,7 +52,7 @@
                    <div id="titulo_loja"> Encontre uma de nossas lojas: </div>
                    <!-- CAIXA QUE FICA AS INFORMAÇÕES DA LOJA -->
                     <?php 
-                     $sql = "SELECT * FROM tbl_lojas where status=1;";
+                     $sql = "SELECT * FROM tbl_lojas where  status=1 limit 2";
                     
 
                     $select = mysqli_query($conexao, $sql);

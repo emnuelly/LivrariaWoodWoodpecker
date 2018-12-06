@@ -39,7 +39,7 @@ if(isset($_GET['modo'])){
             $id = $_GET['id'];
             $_SESSION['id']=$id;
             
-            $sql = "select * from tbl_promocoes;";
+            $sql = "select * from tbl_promocoes where idPromo=".$id;
             
             $select = mysqli_query($conexao, $sql);
             
@@ -49,6 +49,9 @@ if(isset($_GET['modo'])){
                 $novoPreco = $rsConexao['precoNovo'];
                 $antigoPreco = $rsConexao['precoAntigo'];
                 $sltStatus = $rsConexao['status'];
+                $nomefoto = $rsConexao['fotoPromo'];
+                $imagem = $rsConexao['fotoPromo'];
+                $caminhoImg = "<img src='$imagem'>";
             }
             
         }else if($modo = 'excluir'){
@@ -62,12 +65,12 @@ if(isset($_GET['modo'])){
     }
 
     if(!$_SESSION['nome']){
-         header("location:../home.php");
+         header("location:../index.php");
     }
 
     if(isset($_GET['logout'])){
         session_destroy();
-        header("location:../home.php");
+        header("location:../index.php");
         
     }
 
@@ -168,9 +171,9 @@ if(isset($_GET['modo'])){
                     </form>
                    <form name="frmConteudo" method="post" action="admPromocoes.php">
                     <div class="item_cad_loja"><p class="titulo_p">Título: </p> <input type="text" name="txtTitulo" value="<?php echo(@$titulo)?>"></div>
-                    <div class="item_cad_loja"><p class="titulo_p">Preço antigo: </p> <input type="text" name="txtAntigoPreco" value="<?php echo(@$antigoPreco)?>"></div>
-                    <div class="item_cad_loja"><p class="titulo_p">Preço novo: </p> <input type="text" name="txtNovoPreco" value="<?php echo(@$novoPreco)?>"></div>
-                       <input type="text" name="txtFoto" hidden="hidden">
+                    <div class="item_cad_loja"><p class="titulo_p">Preço antigo: </p> <input placeholder="Ex: 34.99" type="text" name="txtAntigoPreco" value="<?php echo(@$antigoPreco)?>"></div>
+                    <div class="item_cad_loja"><p class="titulo_p">Preço novo: </p> <input placeholder="Ex: 14.99"type="text" name="txtNovoPreco" value="<?php echo(@$novoPreco)?>"></div>
+                       <input type="text" name="txtFoto" hidden="hidden" value="<?php echo(@$nomefoto)?>" >
                     <div  class="item_cad_loja"> <p class="titulo_p">Descrição: </p> <textarea class="text" name="txtDescricao" value=""><?php echo(@$descricao)?></textarea> </div>
                         <div  class="item_cad_loja">Ativação:
                     <select name="sltStatus">
@@ -183,6 +186,7 @@ if(isset($_GET['modo'])){
                 </div>
                 
                 <div class="visualizar">
+                <?php echo(@$caminhoImg)?>
                 </div>  
                 <div class="resp_prom">
                 <h1  class="h1_sobre">Promoções cadastradas:</h1>
@@ -200,11 +204,20 @@ if(isset($_GET['modo'])){
                     <div class="item_loja">
                         <a href="admPromocoes.php?modo=editar&id=<?php echo($rsConexao['idPromo']) ?>"><img class="vizualizar" src="image/edit.png" width="20" heigth="20"></a>
                         <a href="admPromocoes.php?modo=excluir&id=<?php echo($rsConexao['idPromo']) ?>"><img class="vizualizar" src="image/file.png" width="20" heigth="20"></a>
+                        <?php 
+                            if($rsConexao['status']==1){
+                        ?>
+                        <img class="vizualizar" src="image/checked.png" width="20" heigth="20">
+                        <?php 
+                            }else{
+                        ?>
+                        <img class="vizualizar" src="image/cancel.png" width="20" heigth="20">
+                         <?php } ?>
                     </div>
                     
                  <?php } ?> 
                     </div>
-                </div>
+                
             </div>
             </div>
         </div>

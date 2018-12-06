@@ -8,9 +8,9 @@
 
    require_once('conexao.php');
 
-    $conexao = conexaoDb();
+$conexao = conexaoDb();
 
-if(isset($_POST['btnSalvar'])){
+    if(isset($_POST['btnSalvar'])){
         
         $txtTitulo = $_POST['txtTitulo'];
         $txtDescricao = $_POST['txtDescricao'];
@@ -34,20 +34,22 @@ if(isset($_GET['modo'])){
         $modo = $_GET['modo'];
         
         if($modo == 'editar'){
-            $botao = "EDITAR";
+            $botao = "ATUALIZAR";
             $id = $_GET['id'];
             $_SESSION['id']=$id;
             
-            $sql = "select * from tbl_destaque;";
+            $sql = "select * from tbl_destaque where idDestaque=".$id;
             
             $select = mysqli_query($conexao, $sql);
             
             while($rsConexao = mysqli_fetch_array($select)){
                 $titulo = $rsConexao['titulo'];
                 $descricao = $rsConexao['descricao'];
-                $novoPreco = $rsConexao['precoNovo'];
-                $antigoPreco = $rsConexao['precoAntigo'];
+                $autor = $rsConexao['autor'];
                 $sltStatus = $rsConexao['status'];
+                $nomefoto = $rsConexao['fotoDestaque'];
+                $imagem = $rsConexao['fotoDestaque'];
+                $caminhoImg = "<img src='$imagem'>"; //inserindo a imagem que vem do banco de dados no html
             }
             
         }else if($modo = 'excluir'){
@@ -62,12 +64,12 @@ if(isset($_GET['modo'])){
 
 //LOGIN
     if(!$_SESSION['nome']){
-         header("location:../home.php");
+         header("location:../index.php");
     }
 
     if(isset($_GET['logout'])){
         session_destroy();
-        header("location:../home.php");
+        header("location:../index.php");
         
     }
 
@@ -169,11 +171,16 @@ if(isset($_GET['modo'])){
                    <form name="frmConteudo" method="post" action="admDestaques.php">
                     <div class="item_cad_loja"><p class="titulo_p">Título: </p> <input type="text" name="txtTitulo" value="<?php echo(@$titulo)?>"></div>
                     <div class="item_cad_loja"><p class="titulo_p">Autor: </p> <input type="text" name="txtAutor" value="<?php echo(@$autor)?>"></div>
-                       <input type="text" name="txtFoto" hidden="hidden">
-                    <div  class="item_cad_loja"> <p class="titulo_p">Descrição: </p> <textarea class="text" name="txtDescricao" value="<?php echo(@$descricao)?>"></textarea> </div>
+                       <input type="text" name="txtFoto" hidden="hidden" value="<?php echo(@$nomefoto)?>">
+                    <div  class="item_cad_loja"> 
+                        <p class="titulo_p">Descrição: </p> 
+                            <textarea class="text" name="txtDescricao" value="">
+                                <?php echo(@$descricao)?>
+                            </textarea> 
+                    </div>
                         <div  class="item_cad_loja">Ativação:
                     <select name="sltStatus">
-                                <option selected value="0" >Desativado</option>
+                                <option value="0" >Desativado</option>
                                 <option value="1">Ativo</option>
                     </select>
                     </div>
@@ -182,6 +189,7 @@ if(isset($_GET['modo'])){
                 </div>
                 
                 <div class="visualizar">
+                <?php echo@($caminhoImg)?>
                 </div>  
                 <div class="resp_prom">
                 <h1  class="h1_sobre"Livros cadastrados:</h1>
@@ -197,8 +205,17 @@ if(isset($_GET['modo'])){
                     <div class="scroll_sobre">
                     <div class="item_loja"><?php echo($rsConexao['titulo'])?></div>
                     <div class="item_loja">
-                        <a href="admDestaques.php?modo=editar&id=<?php echo($rsConexao['idPromo']) ?>"><img class="vizualizar" src="image/edit.png" width="20" heigth="20"></a>
-                        <a href="admDestaques.php?modo=excluir&id=<?php echo($rsConexao['idPromo']) ?>"><img class="vizualizar" src="image/file.png" width="20" heigth="20"></a>
+                        <a href="admDestaques.php?modo=editar&id=<?php echo($rsConexao['idDestaque']) ?>"><img class="vizualizar" src="image/edit.png" width="20" heigth="20"></a>
+                        <a href="admDestaques.php?modo=excluir&id=<?php echo($rsConexao['idDestaque']) ?>"><img class="vizualizar" src="image/file.png" width="20" heigth="20"></a>
+                        <?php 
+                            if($rsConexao['status']==1){
+                        ?>
+                        <img class="vizualizar" src="image/checked.png" width="20" heigth="20">
+                        <?php 
+                            }else{
+                        ?>
+                        <img class="vizualizar" src="image/cancel.png" width="20" heigth="20">
+                         <?php } ?>
                     </div>
                     
                  <?php } ?> 

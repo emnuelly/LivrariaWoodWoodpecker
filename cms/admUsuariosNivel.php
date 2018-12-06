@@ -75,12 +75,12 @@
     }
 
     if(!$_SESSION['nome']){
-         header("location:../home.php");
+         header("location:../index.php");
     }
 
     if(isset($_GET['logout'])){
         session_destroy();
-        header("location:../home.php");
+        header("location:../index.php");
         
     }
 

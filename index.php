@@ -18,6 +18,8 @@
 	<meta charset="utf-8">
 	<title>Livraria Woody Woodpecker</title>
     <link rel="stylesheet" type="text/css" href="CSS/style.css">
+    <link rel="icon" href="image/chat.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="image/chat.png" type="image/x-icon" />
     <!-- final da formatação -->
 
     </head>
@@ -116,7 +118,7 @@
                     <div class="caixa_produto">
                         <!-- IMAGEM -->
                         <div class="img_produto">
-                            <img src="cms/<?php echo($rs['fotoLivro']) ?>" width="140" height="200" alt="livro">
+                            <img src="cms/<?php echo($rs['fotoLivro']) ?>" width="140" height="200" alt="Desculpe, iremos resolver!">
                         </div>
                         <!-- NOME DO LIVRO -->
                         <div class="titulo_produto">

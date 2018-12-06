@@ -38,7 +38,7 @@
             $id = $_GET['id'];
             $_SESSION['id']=$id;
             
-            $sql = "select * from tbl_lojas;";
+            $sql = "select * from tbl_lojas where idLojas=".$id;
             
             $select = mysqli_query($conexao, $sql);
             
@@ -60,12 +60,12 @@
     }
 
     if(!$_SESSION['nome']){
-         header("location:../home.php");
+         header("location:../index.php");
     }
 
     if(isset($_GET['logout'])){
         session_destroy();
-        header("location:../home.php");
+        header("location:../index.php");
         
     }
 ?>
@@ -137,9 +137,9 @@
                 <form name="frmLojas" method="post" action="admLojas.php">
                 <div class="cad_lojas">
                     <h1>Cadastre um novo endereço:</h1>
-                    <div class="item_cad_loja">Endereço: <input type="text" name="txtEndereco"  value="<?php echo(@$endereco)?>"></div>
-                    <div  class="item_cad_loja">  Telefone:  <input type="text" name="txtTelefone"  value="<?php echo(@$telefone)?>"></div>
-                    <div  class="item_cad_loja">Tipo da loja: <input type="text" name="txtNLoja"  value="<?php echo(@$tipoLoja)?>"></div>
+                    <div class="item_cad_loja">Endereço: <input placeholder="Ex: Rua, numero, bairro e cidade" type="text" name="txtEndereco"  value="<?php echo(@$endereco)?>"></div>
+                    <div  class="item_cad_loja">  Telefone:  <input  placeholder="Ex:(00) 2345-2345" type="text" name="txtTelefone"  value="<?php echo(@$telefone)?>"></div>
+                    <div  class="item_cad_loja">Tipo da loja: <input placeholder="Ex:Filial, loja 2" type="text" name="txtNLoja"  value="<?php echo(@$tipoLoja)?>"></div>
                     <div  class="item_cad_loja">Ativação:
                     <select name="sltStatus">
                                 <option selected value="0" >Desativado</option>
@@ -165,6 +165,15 @@
                     <div class="item_loja">
                         <a href="admLojas.php?modo=editar&id=<?php echo($rsConexao['idLojas']) ?>"><img class="vizualizar" src="image/edit.png" width="20" heigth="20"></a>
                         <a href="admLojas.php?modo=excluir&id=<?php echo($rsConexao['idLojas']) ?>"><img class="vizualizar" src="image/file.png" width="20" heigth="20"></a>
+                        <?php 
+                            if($rsConexao['status']==1){
+                        ?>
+                        <img class="vizualizar" src="image/checked.png" width="20" heigth="20">
+                        <?php 
+                            }else{
+                        ?>
+                        <img class="vizualizar" src="image/cancel.png" width="20" heigth="20">
+                         <?php } ?> 
                     </div>
                     
                  <?php } ?> 

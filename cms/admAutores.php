@@ -44,7 +44,7 @@ if(isset($_GET['modo'])){
             $id = $_GET['id'];
             $_SESSION['idAutor']=$id;
             
-            $sql = "select * from tbl_autor;";
+            $sql = "select * from tbl_autor where idAutor=".$id;
             
             $select = mysqli_query($conexao, $sql);
             
@@ -52,6 +52,9 @@ if(isset($_GET['modo'])){
                 $titulo = $rsConexao['nome'];
                 $descricao = $rsConexao['descricao'];
                 $sltStatus = $rsConexao['status'];
+                $nomefoto = $rsConexao['fotoAutor'];
+                $imagem = $rsConexao['fotoAutor'];
+                $caminhoImg = "<img src='$imagem'>";
             }
             
         }else if($modo = 'excluir'){
@@ -65,12 +68,12 @@ if(isset($_GET['modo'])){
     }
 
     if(!$_SESSION['nome']){
-         header("location:../home.php");
+         header("location:../index.php");
     }
 
     if(isset($_GET['logout'])){
         session_destroy();
-        header("location:../home.php");
+        header("location:../index.php");
         
     }
     
@@ -176,7 +179,7 @@ if(isset($_GET['modo'])){
                    <form name="frmConteudo" method="post" action="admAutores.php">
                     <div class="item_cad_loja"><p class="titulo_p">Autor: </p> <input type="text" name="txtNomeAutor" value="<?php echo(@$titulo)?>"></div>
                        <input type="text" name="txtFoto" hidden="hidden">
-                    <div  class="item_cad_loja"> <p class="titulo_p">Descrição: </p> <textarea class="text" name="txtDescricao" value=""> <?php echo(@$descricao)?></textarea> </div>
+                    <div  class="item_cad_loja"> <p class="titulo_p">Descrição: </p> <textarea  maxlength="270" class="text" name="txtDescricao" value=""> <?php echo(@$descricao)?></textarea> </div>
                         <div  class="item_cad_loja">Ativação:
                     <select name="sltStatus">
                                 <option  value="0" >Desativado</option>
@@ -188,7 +191,7 @@ if(isset($_GET['modo'])){
                 </div>
                 
                 <div class="visualizar">
-                    
+                <?php echo@($caminhoImg)?>
                 </div>  
                 <div class="resp_prom">
                 <h1  class="h1_sobre"Autores cadastrados:</h1>
@@ -206,6 +209,15 @@ if(isset($_GET['modo'])){
                     <div class="item_loja">
                         <a href="admAutores.php?modo=editar&id=<?php echo($rsConexao['idAutor']) ?>"><img class="vizualizar" src="image/edit.png" width="20" heigth="20"></a>
                         <a href="admAutores.php?modo=excluir&id=<?php echo($rsConexao['idAutor']) ?>"><img class="vizualizar" src="image/file.png" width="20" heigth="20"></a>
+                        <?php 
+                            if($rsConexao['status']==1){
+                        ?>
+                        <img class="vizualizar" src="image/checked.png" width="20" heigth="20">
+                        <?php 
+                            }else{
+                        ?>
+                        <img class="vizualizar" src="image/cancel.png" width="20" heigth="20">
+                         <?php } ?>
                     </div>
                     
                  <?php } ?> 

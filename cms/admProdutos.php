@@ -4,12 +4,12 @@
    session_start();
 
    if(!$_SESSION['nome']){
-    header("location:../home.php");
+    header("location:../index.php");
 }
 
 if(isset($_GET['logout'])){
    session_destroy();
-   header("location:../home.php");
+   header("location:../index.php");
    
 }
         
@@ -51,7 +51,7 @@ if(isset($_GET['logout'])){
 if(isset($_GET['modo'])){
         $modo = $_GET['modo'];
         
-        if($modo == 'editar'){
+        if($modo == 'atualizar'){
             $botao = "ATUALIZAR";
             $id = $_GET['id'];
             $_SESSION['id']=$id;
@@ -226,7 +226,7 @@ if(isset($_GET['modo'])){
 
                     <div  class="item_cad_loja"> 
                     <p class="titulo_p">Sobre: </p> 
-                    <input  maxlength="160" placeholder="Digite no máximo 160 caracteres" class="text" name="txtDescricao" value=""><?php echo(@$descricao)?>
+                    <input  maxlength="160" placeholder="Digite no máximo 160 caracteres" class="text" name="txtDescricao" value="<?php echo(@$descricao)?>">
                     </input> </div>
                     <div class="item_cad_loja"><p class="titulo_p">Preço: </p> <input type="text" name="txtPreco"  value="<?php echo(@$preco)?>"></div>
                         <div  class="item_cad_loja">Ativação:

@@ -6,65 +6,84 @@
    // o botão ja vai iniciar com esse nome
    $botao = "SALVAR";
 
+   //caminho do banco
    require_once('conexao.php');
 
+   //conexão do banco para a pagina
     $conexao = conexaoDb();
 
+    // verificando o click botão de inserir
     if(isset($_POST['btnSalvar'])){
         
+        // variaveis
         $txtTitulo = $_POST['txtTitulo'];
         $txtDescricao = $_POST['txtDescricao'];
         $sltStatus = $_POST['sltStatus'];
         $foto = $_POST['txtFoto'];
         
+        //usando a variável de sessão para saber qual a função que o botão deve fazer
         if($_POST['btnSalvar'] == "SALVAR"){
-            
+            //insert no banco: inseri dados novos
             $sql = "INSERT INTO tbl_sobre(titulo, descricao, fotoSobre, status) VALUES ('".$txtTitulo."','".$txtDescricao."','".$foto."','".$sltStatus."');";
         }else if($_POST['btnSalvar'] == "EDITAR"){
+            //update no banco:  recebe novas atualizações
             $sql = "UPDATE tbl_sobre SET titulo='".$txtTitulo."', descricao='".$txtDescricao."', fotoSobre='".$foto."', status='".$sltStatus."' WHERE idSobre=".$_SESSION['id'];
         }
         
+        //conectando com o banco
         mysqli_query($conexao,$sql);
+        //impede que os dados sejam gravados várias vezes
         header('location:admSobre.php');
         
     }
 
+    //pegando pela url o modo que foi clicado dentro das opções
     if(isset($_GET['modo'])){
         $modo = $_GET['modo'];
         
+        //modo de edição dos dados
         if($modo == 'editar'){
-            $botao = "EDITAR";
-            $id = $_GET['id'];
-            $_SESSION['id']=$id;
+            $botao = "EDITAR"; //variável de sessão
+            $id = $_GET['id']; //pegando o dado da url
+            $_SESSION['id']=$id; //startando a conexão
             
-            $sql = "select * from tbl_sobre;";
+            //comando no ban
+            $sql = "select * from tbl_sobre WHERE idSobre=".$id;
             
+            //armazenando em uma variável
             $select = mysqli_query($conexao, $sql);
             
+            //criando um while para trazer todos os dados
             while($rsConexao = mysqli_fetch_array($select)){
-                $titulo = $rsConexao['titulo'];
+                $titulo = $rsConexao['titulo']; 
                 $descricao = $rsConexao['descricao'];
                 $sltStatus = $rsConexao['status'];
+                $nomefoto = $rsConexao['fotoSobre'];
+                $imagem = $rsConexao['fotoSobre'];
+                $caminhoImg = "<img src='$imagem'>"; //inserindo a imagem que vem do banco de dados no html
             }
-            
+        // modo de exclusão
         }else if($modo = 'excluir'){
             $id = $_GET['id'];
+            //comndo no banco
             $sql = "delete from tbl_sobre where idSobre=".$id;
             
+            //conexão do banco
             mysqli_query($conexao,$sql);
+            //impede de criar o mesmo registro varias vezes
             header('location:admSobre.php');
             
         }
     }
 
-if(!$_SESSION['nome']){
-         header("location:../home.php");
+    //inicio de sessão do login
+    if(!$_SESSION['nome']){
+         header("location:../index.php");
     }
-
+    //saindo da sessão do cms
     if(isset($_GET['logout'])){
-        session_destroy();
-        header("location:../home.php");
-        
+        session_destroy(); //destroi os registros do cms
+        header("location:../index.php");
     }
 
 
@@ -163,7 +182,7 @@ if(!$_SESSION['nome']){
                     </form>
                    <form name="frmConteudo" method="post" action="admSobre.php">
                     <div class="item_cad_loja"><p class="titulo_p">Título: </p> <input type="text" name="txtTitulo" value="<?php echo(@$titulo)?>"></div>
-                       <input type="text" name="txtFoto" hidden="hidden">
+                       <input type="text" name="txtFoto" hidden="hidden" value="<?php echo(@$nomefoto)?>" >
                     <div  class="item_cad_loja"> <p class="titulo_p">Descrição: </p> <textarea class="text" name="txtDescricao" ><?php echo(@$descricao)?></textarea> </div>
                         <div  class="item_cad_loja">Ativação:
                     <select name="sltStatus">
@@ -175,6 +194,7 @@ if(!$_SESSION['nome']){
                         </form>
                 </div>
                 <div class="visualizar">
+                <?php echo@($caminhoImg)?>
                 </div>  
                 <div class="resp_sobre">
                 <h1  class="h1_sobre">Informações cadastradas:</h1>
@@ -192,6 +212,15 @@ if(!$_SESSION['nome']){
                     <div class="item_loja">
                         <a href="admSobre.php?modo=editar&id=<?php echo($rsConexao['idSobre']) ?>"><img class="vizualizar" src="image/edit.png" width="20" heigth="20"></a>
                         <a href="admSobre.php?modo=excluir&id=<?php echo($rsConexao['idSobre']) ?>"><img class="vizualizar" src="image/file.png" width="20" heigth="20"></a>
+                        <?php 
+                            if($rsConexao['status']==1){
+                        ?>
+                        <img class="vizualizar" src="image/checked.png" width="20" heigth="20">
+                        <?php 
+                            }else{
+                        ?>
+                        <img class="vizualizar" src="image/cancel.png" width="20" heigth="20">
+                         <?php } ?> 
                     </div>
                     
                  <?php } ?> 

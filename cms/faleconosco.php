@@ -46,7 +46,7 @@
             function modal(idItem){
                 $.ajax({
                     type: "POST",
-                    url: "modal.php",
+                    url: "modalFaleConosco.php",
                     data:{idRegistro:idItem},
                     success: function(dados){
                         $('#modal').html(dados)
